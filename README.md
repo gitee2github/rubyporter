@@ -1,37 +1,40 @@
 # rubyporter
 
-#### 介绍
+#### Description
 A rpm packager bot for ruby modules from rubygems.org
 
-#### 软件架构
-软件架构说明
+It is a tool to create spec file and create rpm for ruby modules.
+#### Installation
+
+python3 setup.py install
+
+#### Preparation
+Install below sofware before using this tool
+
+*  gcc 
+*  gdb 
+*  libstdc++-devel 
+*  ruby-devel
+*  rubygems-devel
+
+### Instructions
+1. Create spec file, *rubyporter -s xxx*, add *-o xxx* to save to a file
+```
+e.g.  rubyporter -s puma (generate and display in the screen)
+     
+      rubyporter -s puma -o rubygem-puma.spec (generate and save to a file)
+```
 
 
-#### 安装教程
+2. Build rpm package, *rubyporter -b xxx*
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+3. Build and Install rpm package, *rubyporter -B xxx*
 
-#### 使用说明
+4. For more details, please use *rubyporter -h*
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+#### Contribution
+1.  Fork the repository
+2.  Create Feat_xxx branch
+3.  Commit your code
+4.  Create Pull Request
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 码云特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
