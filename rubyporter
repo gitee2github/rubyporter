@@ -164,8 +164,7 @@ class RubyPorter:
     def prepare_pkg_install(self):
         print("mkdir -p %{buildroot}%{gem_dir}")
         print("cp -a .%{gem_dir}/* %{buildroot}%{gem_dir}/")
-        print("rm -rf %{buildroot}%{gem_instdir}/.gitignore")
-        print("rm -rf %{buildroot}%{gem_instdir}/.travis.yml")
+        print("rsync -a --exclude=\".*\" .%{gem_dir}/* %{buildroot}%{gem_dir}/")
 
         print("if [ -d .%{_bindir} ]; then")
         print("\tmkdir -p %{buildroot}%{_bindir}")
@@ -174,7 +173,11 @@ class RubyPorter:
 
         print("if [ -d ext ]; then")
         print("\tmkdir -p %{buildroot}%{gem_extdir_mri}/%{gem_name}")
-        print("\tcp -a .%{gem_extdir_mri}/%{gem_name}/*.so %{buildroot}%{gem_extdir_mri}/%{gem_name}")
+        print("\tif [ -d .%{gem_extdir_mri}/%{gem_name} ]; then")
+        print("\t\tcp -a .%{gem_extdir_mri}/%{gem_name}/*.so %{buildroot}%{gem_extdir_mri}/%{gem_name}")
+        print("\telse")
+        print("\t\tcp -a .%{gem_extdir_mri}/*.so %{buildroot}%{gem_extdir_mri}/%{gem_name}")
+        print("fi")
         print("\tcp -a .%{gem_extdir_mri}/gem.build_complete %{buildroot}%{gem_extdir_mri}/")
         print("\trm -rf %{buildroot}%{gem_instdir}/ext/")
         print("fi")
