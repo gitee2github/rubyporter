@@ -153,6 +153,7 @@ class RubyPorter:
         print(buildreq_tag_template.format(req='ruby-devel'))
         print(buildreq_tag_template.format(req='rubygems'))
         print(buildreq_tag_template.format(req='rubygems-devel'))
+        print(buildreq_tag_template.format(req='rsync'))
         if not self.__build_noarch:
             print(buildreq_tag_template.format(req='gcc'))
             print(buildreq_tag_template.format(req='gdb'))
